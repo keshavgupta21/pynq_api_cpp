@@ -1,20 +1,28 @@
-# PYNQ API: C API for PYNQ FPGA board
+# PYNQ API: C/C++ API for PYNQ FPGA access
+
+This library is forked from <a href = "https://github.com/mesham/pynq_api">https://github.com/mesham/pynq_api</a>.
+
+I added additional functionality to this library to support AXI GPIO. Additionally, I modified this library to allow both C and C++ compilers to build programs with this library. Below this line is the original documentation with some bugfixes.
+
+---
+
+## PYNQ API: C API for PYNQ FPGA board
 
 This project is a C based API for interacting with the 7-Series Zynq on the Pynq board, providing drivers that can be used to easily work with IP blocks running on the PL. In addition to the core parts of the API, there is also support provided for abstracting the interaction with some of the common AXI based IP blocks.
 
 The idea of this work is to provide an alternative to the Python drivers that ship with the Pynq board, so that people can experiment with intergrating their existing codes onto the FPGA and interacting with these. The design of this API is very simple and as such should be trivial to wrap in bindings for other languages such as Fortran and Java.
 
-See the <a href="https://github.com/mesham/pynq_api/tree/master/docs">documentation</a> for a detailed description of the API calls and functionality.
+See the <a href="https://github.mit.edu/EEMS/pynq_api_cpp/tree/master/docs">documentation</a> for a detailed description of the API calls and functionality.
 
-## Installation
+### Installation
 
 Clone or download the repository onto your Pynq board and then issue ``make``. Once the code has build then issues ``sudo make install`` to install the library and header file to a common location on the board
 
-## Usage
+### Usage
 
-You should include the ``pynq_api.h`` header file in your codes, in order to link the code you will need to link against the ``pynq_api``, ``cma`` and ``pthread`` library. I.e. ``gcc -o my_code my_code.c -lpynq_api -lcma -lpthread``
+You should include the ``pynq_api.h`` header file in your codes, in order to link the code you will need to link against the ``pynq``, ``cma`` and ``pthread`` library. I.e. ``gcc -o my_code my_code.c -lpynq -lcma -lpthread``
 
-## Example usage
+### Example usage
 
 This simple example assumes you have created an AXI DMA memory IP block, set it at address ``0x40400000`` and the streaming interfaces of this IP block are connected to some data storage such as an AXI streaming FIFO queue.
 
